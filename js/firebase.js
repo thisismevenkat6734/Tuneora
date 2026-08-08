@@ -3,7 +3,7 @@
 // ===============================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
+import { getStorage } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-storage.js";
 import {
     getAuth
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
@@ -34,11 +34,13 @@ const auth = getAuth(app);
 
 // Cloud Firestore
 const db = getFirestore(app);
-
+// Firebase Storage
+const storage = getStorage(app);
 
 // Export Firebase services
 export {
     app,
     auth,
-    db
+    db,
+    storage
 };
