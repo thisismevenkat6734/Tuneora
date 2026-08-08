@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,7 +84,6 @@
 
     input {
       width: 100%;
-
       padding: 15px;
 
       border-radius: 12px;
@@ -95,7 +93,6 @@
       color: #ffffff;
 
       font-size: 15px;
-
       outline: none;
     }
 
@@ -135,29 +132,38 @@
       display: none;
 
       margin-top: 15px;
-
       padding: 12px;
 
       border-radius: 10px;
 
       font-size: 13px;
-
       text-align: center;
+    }
+
+    .message.success {
+      display: block;
+      background: #12351f;
+      color: #6cff9b;
+      border: 1px solid #245c36;
+    }
+
+    .message.error {
+      display: block;
+      background: #351414;
+      color: #ff8585;
+      border: 1px solid #642525;
     }
 
     .forgot {
       display: block;
 
       text-align: right;
-
       margin-top: 10px;
 
       color: #ff3d91;
-
       font-size: 13px;
 
       text-decoration: none;
-
       cursor: pointer;
     }
 
@@ -167,17 +173,310 @@
       margin-top: 22px;
 
       color: #999;
-
       font-size: 14px;
     }
 
     .signup-link a {
       color: #ff3d91;
-
       text-decoration: none;
-
       font-weight: bold;
     }
 
     .back {
-     
+      display: block;
+
+      text-align: center;
+
+      margin-top: 18px;
+
+      color: #777;
+      font-size: 13px;
+
+      text-decoration: none;
+    }
+
+    .back:hover,
+    .forgot:hover,
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+
+    <div class="logo">
+      <h1>Tune<span>ora</span></h1>
+      <p>Your music. Your world.</p>
+    </div>
+
+    <h2>Welcome back</h2>
+
+    <p class="subtitle">
+      Login to continue listening to your music.
+    </p>
+
+    <form id="loginForm">
+
+      <div class="input-group">
+        <label for="email">Email address</label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="login-btn"
+        id="loginBtn"
+      >
+        <span id="loginText">Login</span>
+        <span id="loadingText" class="loading">Signing in...</span>
+      </button>
+
+    </form>
+
+    <a
+      href="#"
+      class="forgot"
+      id="forgotPassword"
+    >
+      Forgot password?
+    </a>
+
+    <div id="message" class="message"></div>
+
+    <div class="signup-link">
+      Don't have an account?
+      <a href="signup.html">Create account</a>
+    </div>
+
+    <a href="index.html" class="back">
+      ← Back to Tuneora
+    </a>
+
+  </div>
+
+  <script type="module">
+
+    import {
+      signInWithEmailAndPassword,
+      sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+    import { auth } from "./js/firebase.js";
+
+
+    const loginForm = document.getElementById("loginForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    const loginBtn = document.getElementById("loginBtn");
+    const loginText = document.getElementById("loginText");
+    const loadingText = document.getElementById("loadingText");
+
+    const message = document.getElementById("message");
+    const forgotPassword = document.getElementById("forgotPassword");
+
+
+    function showMessage(text, type) {
+
+      message.textContent = text;
+
+      message.className = "message " + type;
+    }
+
+
+    function setLoading(loading) {
+
+      loginBtn.disabled = loading;
+
+      if (loading) {
+
+        loginText.style.display = "none";
+        loadingText.style.display = "inline";
+
+      } else {
+
+        loginText.style.display = "inline";
+        loadingText.style.display = "none";
+
+      }
+    }
+
+
+    loginForm.addEventListener("submit", async (event) => {
+
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!email || !password) {
+
+        showMessage(
+          "Please enter your email and password.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      setLoading(true);
+
+      message.className = "message";
+
+
+      try {
+
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+
+        showMessage(
+          "Login successful! Redirecting...",
+          "success"
+        );
+
+
+        setTimeout(() => {
+
+          window.location.href = "index.html";
+
+        }, 800);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        let errorMessage =
+          "Unable to login. Please try again.";
+
+
+        if (
+          error.code === "auth/invalid-credential" ||
+          error.code === "auth/wrong-password" ||
+          error.code === "auth/user-not-found"
+        ) {
+
+          errorMessage =
+            "Incorrect email or password.";
+
+        } else if (
+          error.code === "auth/invalid-email"
+        ) {
+
+          errorMessage =
+            "Please enter a valid email address.";
+
+        } else if (
+          error.code === "auth/too-many-requests"
+        ) {
+
+          errorMessage =
+            "Too many attempts. Please try again later.";
+
+        }
+
+
+        showMessage(errorMessage, "error");
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+    });
+
+
+    forgotPassword.addEventListener("click", async (event) => {
+
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+
+
+      if (!email) {
+
+        showMessage(
+          "Enter your email address first.",
+          "error"
+        );
+
+        emailInput.focus();
+
+        return;
+      }
+
+
+      try {
+
+        await sendPasswordResetEmail(
+          auth,
+          email
+        );
+
+
+        showMessage(
+          "Password reset email sent. Check your inbox.",
+          "success"
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        if (error.code === "auth/user-not-found") {
+
+          showMessage(
+            "No account found with this email.",
+            "error"
+          );
+
+        } else {
+
+          showMessage(
+            "Could not send reset email. Please try again.",
+            "error"
+          );
+
+        }
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
