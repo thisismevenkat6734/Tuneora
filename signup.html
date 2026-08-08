@@ -1,1 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuneora - Sign Up</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #080808;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .signup-container {
+      width: 100%;
+      max-width: 430px;
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 22px;
+      padding: 35px 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ff2d8d;
+    }
+
+    .logo p {
+      margin-top: 8px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #bbb;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      background: #0d0d0d;
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #ff2d8d;
+    }
+
+    .signup-btn {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 8px;
+      background: linear-gradient(135deg, #ff2d8d, #ff5b35);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 22px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #ff3d91;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      text-decoration: none;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="signup-container">
+
+    <div class="logo">
+      <h1>Tune<span>ora</span></h1>
+      <p>Your music. Your world.</p>
+    </div>
+
+    <h2>Create Account</h2>
+    <p class="subtitle">Join Tuneora and start your music journey.</p>
+
+    <form id="signupForm">
+
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Create a password"
+          minlength="6"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm your password"
+          minlength="6"
+          required
+        >
+      </div>
+
+      <button type="submit" class="signup-btn" id="signupBtn">
+        Create Account
+      </button>
+
+      <div class="message" id="message"></div>
+
+    </form>
+
+    <div class="login-link">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </div>
+
+    <a href="index.html" class="back">← Back to Tuneora</a>
+
+  </div>
+
+
+  <script type="module">
+
+    import { auth, db } from "./js/firebase.js";
+
+    import {
+      createUserWithEmailAndPassword,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+    import {
+      doc,
+      setDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+    const signupForm = document.getElementById("signupForm");
+    const signupBtn = document.getElementById("signupBtn");
+    const message = document.getElementById("message");
+
+
+    function showMessage(text, success = false) {
+
+      message.style.display = "block";
+      message.textContent = text;
+
+      if (success) {
+        message.style.background = "#12351f";
+        message.style.color = "#55e88a";
+      } else {
+        message.style.background = "#35151b";
+        message.style.color = "#ff7185";
+      }
+    }
+
+
+    signupForm.addEventListener("submit", async (event) => {
+
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+
+      if (password !== confirmPassword) {
+
+        showMessage("Passwords do not match.");
+        return;
+      }
+
+
+      if (password.length < 6) {
+
+        showMessage("Password must contain at least 6 characters.");
+        return;
+      }
+
+
+      signupBtn.disabled = true;
+      signupBtn.textContent = "Creating Account...";
+
+
+      try {
+
+        // Create Firebase Authentication account
+        const userCredential =
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        const user = userCredential.user;
+
+
+        // Save user's display name
+        await updateProfile(user, {
+          displayName: name
+        });
+
+
+        // Save user profile in Firestore
+        await setDoc(doc(db, "users", user.uid), {
+
+          uid: user.uid,
+          name: name,
+          email: email,
+          createdAt: serverTimestamp()
+
+        });
+
+
+        showMessage(
+          "Account created successfully! Redirecting...",
+          true
+        );
+
+
+        setTimeout(() => {
+
+          window.location.href = "index.html";
+
+        }, 1500);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        let errorMessage = "Unable to create account.";
+
+        if (error.code === "auth/email-already-in-use") {
+          errorMessage = "This email is already registered.";
+        }
+
+        else if (error.code === "auth/invalid-email") {
+          errorMessage = "Please enter a valid email address.";
+        }
+
+        else if (error.code === "auth/weak-password") {
+          errorMessage = "Password is too weak.";
+        }
+
+        else if (error.code === "auth/network-request-failed") {
+          errorMessage = "Network error. Please try again.";
+        }
+
+        showMessage(errorMessage);
+
+        signupBtn.disabled = false;
+        signupBtn.textContent = "Create Account";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
