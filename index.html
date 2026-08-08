@@ -1,1 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Tuneora — Create. Share. Listen.</title>
+
+    <meta name="description"
+          content="Tuneora is a user-created music streaming platform where creators can share their music and listeners can discover new sounds.">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="top-header">
+
+        <div class="brand">
+            <div class="brand-icon">♪</div>
+
+            <div class="brand-text">
+                <h1>Tuneora</h1>
+                <span>Create. Share. Listen.</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="#explore" class="nav-link">Explore</a>
+            <a href="#trending" class="nav-link">Trending</a>
+            <a href="#artists" class="nav-link">Artists</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="icon-button" id="searchButton" aria-label="Search">
+                🔍
+            </button>
+
+            <a href="#upload" class="upload-button">
+                <span>＋</span>
+                Upload
+            </a>
+
+            <a href="login.html" class="login-button">
+                Login
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SEARCH ================= -->
+    <section class="search-section" id="searchSection">
+
+        <div class="search-box">
+            <span>🔍</span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search songs, artists or genres..."
+                autocomplete="off"
+            >
+
+            <button id="closeSearch" aria-label="Close search">
+                ×
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    🎵 YOUR MUSIC. YOUR WORLD.
+                </span>
+
+                <h2>
+                    Discover music<br>
+                    <span>created by people.</span>
+                </h2>
+
+                <p>
+                    Listen to original music from creators around the world.
+                    Discover new artists, find your vibe and share your sound.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#explore" class="primary-button">
+                        Explore Music
+                        <span>→</span>
+                    </a>
+
+                    <a href="#upload" class="secondary-button">
+                        Upload Your Song
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-art">
+
+                <div class="vinyl">
+                    <div class="vinyl-center">
+                        ♪
+                    </div>
+                </div>
+
+                <div class="floating-note note-one">♪</div>
+                <div class="floating-note note-two">♫</div>
+                <div class="floating-note note-three">♬</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRENDING ================= -->
+        <section class="content-section" id="trending">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">LISTEN NOW</span>
+                    <h2>Trending Music</h2>
+                </div>
+
+                <a href="#explore" class="view-all">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <div class="music-grid">
+
+                <!-- SONG 1 -->
+                <article class="music-card">
+
+                    <div class="cover-art cover-one">
+
+                        <span class="cover-symbol">♪</span>
+
+                        <button
+                            class="play-card-button"
+                            data-song="Midnight Dreams"
+                            aria-label="Play Midnight Dreams">
+                            ▶
+                        </button>
+
+                    </div>
+
+                    <div class="music-info">
+                        <h3>Midnight Dreams</h3>
+                        <p>Aria Moon</p>
+
+                        <div class="song-meta">
+                            <span>Pop</span>
+                            <span>3:42</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <!-- SONG 2 -->
+                <article class="music-card">
+
+                    <div class="cover-art cover-two">
+
+                        <span class="cover-symbol">♫</span>
+
+                        <button
+                            class="play-card-button"
+                            data-song="Lost In The Vibe"
+                            aria-label="Play Lost In The Vibe">
+                            ▶
+                        </button>
+
+                    </div>
+
+                    <div class="music-info">
+                        <h3>Lost In The Vibe</h3>
+                        <p>Nova Beats</p>
+
+                        <div class="song-meta">
+                            <span>Electronic</span>
+                            <span>4:08</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <!-- SONG 3 -->
+                <article class="music-card">
+
+                    <div class="cover-art cover-three">
+
+                        <span class="cover-symbol">♬</span>
+
+                        <button
+                            class="play-card-button"
+                            data-song="Ocean Lights"
+                            aria-label="Play Ocean Lights">
+                            ▶
+                        </button>
+
+                    </div>
+
+                    <div class="music-info">
+                        <h3>Ocean Lights</h3>
+                        <p>Leo Waves</p>
+
+                        <div class="song-meta">
+                            <span>Chill</span>
+                            <span>3:55</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <!-- SONG 4 -->
+                <article class="music-card">
+
+                    <div class="cover-art cover-four">
+
+                        <span class="cover-symbol">♪</span>
+
+                        <button
+                            class="play-card-button"
+                            data-song="After The Rain"
+                            aria-label="Play After The Rain">
+                            ▶
+                        </button>
+
+                    </div>
+
+                    <div class="music-info">
+                        <h3>After The Rain</h3>
+                        <p>Riya Sky</p>
+
+                        <div class="song-meta">
+                            <span>Acoustic</span>
+                            <span>3:27</span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NEW MUSIC ================= -->
+        <section class="content-section" id="explore">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">FRESH SOUNDS</span>
+                    <h2>Recently Added</h2>
+                </div>
+
+                <a href="#explore" class="view-all">
+                    Explore all →
+                </a>
+
+            </div>
+
+
+            <div class="song-list">
+
+                <article class="song-row">
+
+                    <div class="small-cover cover-five">
+                        ♪
+                    </div>
+
+                    <div class="row-song-info">
+                        <h3>Falling Slowly</h3>
+                        <p>Daniel Ray</p>
+                    </div>
+
+                    <span class="row-genre">Indie</span>
+                    <span class="row-duration">3:31</span>
+
+                    <button
+                        class="row-play"
+                        data-song="Falling Slowly">
+                        ▶
+                    </button>
+
+                </article>
+
+
+                <article class="song-row">
+
+                    <div class="small-cover cover-six">
+                        ♫
+                    </div>
+
+                    <div class="row-song-info">
+                        <h3>City Lights</h3>
+                        <p>Maya Rose</p>
+                    </div>
+
+                    <span class="row-genre">R&B</span>
+                    <span class="row-duration">4:12</span>
+
+                    <button
+                        class="row-play"
+                        data-song="City Lights">
+                        ▶
+                    </button>
+
+                </article>
+
+
+                <article class="song-row">
+
+                    <div class="small-cover cover-seven">
+                        ♬
+                    </div>
+
+                    <div class="row-song-info">
+                        <h3>New Beginning</h3>
+                        <p>Skyline</p>
+                    </div>
+
+                    <span class="row-genre">Ambient</span>
+                    <span class="row-duration">5:01</span>
+
+                    <button
+                        class="row-play"
+                        data-song="New Beginning">
+                        ▶
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CREATOR SECTION ================= -->
+        <section class="creator-section" id="upload">
+
+            <div class="creator-content">
+
+                <span class="section-label">
+                    FOR CREATORS
+                </span>
+
+                <h2>
+                    Your sound deserves<br>
+                    to be heard.
+                </h2>
+
+                <p>
+                    Create your music, upload your original songs and
+                    share your sound with listeners on Tuneora.
+                </p>
+
+                <a href="login.html" class="primary-button">
+                    Start Creating
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <div class="creator-icon">
+                🎙️
+            </div>
+
+        </section>
+
+
+        <!-- ================= ARTISTS ================= -->
+        <section class="content-section" id="artists">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">DISCOVER</span>
+                    <h2>Popular Creators</h2>
+                </div>
+
+            </div>
+
+
+            <div class="artist-grid">
+
+                <article class="artist-card">
+                    <div class="artist-avatar avatar-one">A</div>
+                    <h3>Aria Moon</h3>
+                    <p>24 Songs</p>
+                </article>
+
+                <article class="artist-card">
+                    <div class="artist-avatar avatar-two">N</div>
+                    <h3>Nova Beats</h3>
+                    <p>18 Songs</p>
+                </article>
+
+                <article class="artist-card">
+                    <div class="artist-avatar avatar-three">L</div>
+                    <h3>Leo Waves</h3>
+                    <p>31 Songs</p>
+                </article>
+
+                <article class="artist-card">
+                    <div class="artist-avatar avatar-four">R</div>
+                    <h3>Riya Sky</h3>
+                    <p>16 Songs</p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MUSIC PLAYER ================= -->
+    <footer class="music-player" id="musicPlayer">
+
+        <div class="now-playing">
+
+            <div class="player-cover">
+                ♪
+            </div>
+
+            <div class="player-song">
+                <h3 id="playerSongName">Nothing playing</h3>
+                <p id="playerArtistName">Choose a song to start listening</p>
+            </div>
+
+        </div>
+
+
+        <div class="player-controls">
+
+            <button id="shuffleButton" aria-label="Shuffle">
+                🔀
+            </button>
+
+            <button id="previousButton" aria-label="Previous">
+                ⏮
+            </button>
+
+            <button
+                class="main-play-button"
+                id="mainPlayButton"
+                aria-label="Play">
+                ▶
+            </button>
+
+            <button id="nextButton" aria-label="Next">
+                ⏭
+            </button>
+
+            <button id="repeatButton" aria-label="Repeat">
+                🔁
+            </button>
+
+        </div>
+
+
+        <div class="player-progress">
+
+            <span id="currentTime">0:00</span>
+
+            <div class="progress-track">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <span id="totalTime">0:00</span>
+
+        </div>
+
+
+        <div class="player-volume">
+
+            <span>🔊</span>
+
+            <input
+                type="range"
+                id="volumeControl"
+                min="0"
+                max="100"
+                value="80"
+                aria-label="Volume">
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= MOBILE NAV ================= -->
+    <nav class="mobile-nav">
+
+        <a href="index.html" class="mobile-nav-item active">
+            <span>⌂</span>
+            <small>Home</small>
+        </a>
+
+        <a href="#explore" class="mobile-nav-item">
+            <span>⌕</span>
+            <small>Explore</small>
+        </a>
+
+        <a href="#upload" class="mobile-nav-item upload-mobile">
+            <span>＋</span>
+            <small>Upload</small>
+        </a>
+
+        <a href="#trending" class="mobile-nav-item">
+            <span>♫</span>
+            <small>Music</small>
+        </a>
+
+        <a href="login.html" class="mobile-nav-item">
+            <span>◯</span>
+            <small>Profile</small>
+        </a>
+
+    </nav>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="js/app.js"></script>
+
+</body>
+</html>
