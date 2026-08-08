@@ -35,7 +35,7 @@
 
         .upload-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
 
             background: #151515;
 
@@ -86,8 +86,10 @@
 
         label {
             display: block;
+
             font-size: 13px;
             color: #bbb;
+
             margin-bottom: 8px;
         }
 
@@ -115,22 +117,30 @@
         input:focus,
         select:focus,
         textarea:focus {
+
             border-color: #ff2d8d;
         }
 
         textarea {
+
             min-height: 100px;
+
             resize: vertical;
         }
 
         input[type="file"] {
+
             padding: 12px;
+
             cursor: pointer;
         }
 
         .file-info {
+
             margin-top: 7px;
+
             font-size: 12px;
+
             color: #777;
         }
 
@@ -163,20 +173,27 @@
         }
 
         .upload-btn:disabled {
+
             opacity: 0.6;
+
             cursor: not-allowed;
         }
 
         .progress-container {
+
             display: none;
+
             margin-top: 20px;
         }
 
         .progress-text {
+
             display: flex;
+
             justify-content: space-between;
 
             font-size: 13px;
+
             color: #aaa;
 
             margin-bottom: 8px;
@@ -185,6 +202,7 @@
         .progress-track {
 
             width: 100%;
+
             height: 8px;
 
             background: #292929;
@@ -197,6 +215,7 @@
         .progress-bar {
 
             width: 0%;
+
             height: 100%;
 
             background:
@@ -221,4 +240,1092 @@
 
             font-size: 13px;
 
-            text-align:
+            text-align: center;
+        }
+
+        .success {
+
+            background: rgba(0, 200, 120, 0.12);
+
+            border: 1px solid rgba(0, 200, 120, 0.35);
+
+            color: #55e6a5;
+        }
+
+        .error {
+
+            background: rgba(255, 50, 80, 0.12);
+
+            border: 1px solid rgba(255, 50, 80, 0.35);
+
+            color: #ff7185;
+        }
+
+        .back-link {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #999;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+
+            color: #ffffff;
+        }
+
+        .user-status {
+
+            margin-bottom: 20px;
+
+            padding: 10px 12px;
+
+            border-radius: 10px;
+
+            background: #0d0d0d;
+
+            border: 1px solid #292929;
+
+            color: #aaa;
+
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        .audio-preview {
+
+            display: none;
+
+            width: 100%;
+
+            margin-top: 12px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="upload-container">
+
+
+    <div class="logo">
+
+        <h1>
+            Tune<span>ora</span>
+        </h1>
+
+        <p>
+            Your music. Your world.
+        </p>
+
+    </div>
+
+
+    <h2>
+        Upload Your Music
+    </h2>
+
+    <p class="subtitle">
+        Share your original music with the Tuneora community.
+    </p>
+
+
+    <div
+        id="userStatus"
+        class="user-status"
+    >
+        Checking login...
+    </div>
+
+
+    <form id="uploadForm">
+
+
+        <div class="input-group">
+
+            <label for="songTitle">
+                Song Title
+            </label>
+
+            <input
+                type="text"
+                id="songTitle"
+                placeholder="Enter song title"
+                required
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="artistName">
+                Artist Name
+            </label>
+
+            <input
+                type="text"
+                id="artistName"
+                placeholder="Enter artist name"
+                required
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="genre">
+                Genre
+            </label>
+
+            <select
+                id="genre"
+                required
+            >
+
+                <option value="">
+                    Select genre
+                </option>
+
+                <option value="Pop">
+                    Pop
+                </option>
+
+                <option value="Rock">
+                    Rock
+                </option>
+
+                <option value="Hip Hop">
+                    Hip Hop
+                </option>
+
+                <option value="Electronic">
+                    Electronic
+                </option>
+
+                <option value="Chill">
+                    Chill
+                </option>
+
+                <option value="Acoustic">
+                    Acoustic
+                </option>
+
+                <option value="Classical">
+                    Classical
+                </option>
+
+                <option value="Devotional">
+                    Devotional
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="description">
+                Description
+            </label>
+
+            <textarea
+                id="description"
+                placeholder="Tell listeners about your song..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="audioFile">
+                Audio File
+            </label>
+
+            <input
+                type="file"
+                id="audioFile"
+                accept="audio/*"
+                required
+            >
+
+            <div
+                id="fileInfo"
+                class="file-info"
+            >
+                Select an audio file.
+            </div>
+
+            <audio
+                id="audioPreview"
+                class="audio-preview"
+                controls
+            ></audio>
+
+        </div>
+
+
+        <button
+            type="submit"
+            id="uploadButton"
+            class="upload-btn"
+        >
+            Upload Song
+        </button>
+
+
+    </form>
+
+
+    <div
+        id="progressContainer"
+        class="progress-container"
+    >
+
+        <div class="progress-text">
+
+            <span id="progressStatus">
+                Uploading...
+            </span>
+
+            <span id="progressPercent">
+                0%
+            </span>
+
+        </div>
+
+
+        <div class="progress-track">
+
+            <div
+                id="progressBar"
+                class="progress-bar"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="successMessage"
+        class="message success"
+    ></div>
+
+
+    <div
+        id="errorMessage"
+        class="message error"
+    ></div>
+
+
+    <a
+        href="index.html"
+        class="back-link"
+    >
+        ← Back to Tuneora
+    </a>
+
+
+</div>
+
+
+<script type="module">
+
+
+/* =========================================================
+   FIREBASE
+   ========================================================= */
+
+import {
+    auth,
+    db
+} from "./js/firebase.js";
+
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+/* =========================================================
+   CLOUDINARY
+   ========================================================= */
+
+const CLOUDINARY_CLOUD_NAME =
+    "dkshchiq7"
+
+
+const CLOUDINARY_UPLOAD_PRESET =
+    "tuneora_songs";
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const uploadForm =
+    document.getElementById("uploadForm");
+
+
+const uploadButton =
+    document.getElementById("uploadButton");
+
+
+const audioFile =
+    document.getElementById("audioFile");
+
+
+const fileInfo =
+    document.getElementById("fileInfo");
+
+
+const audioPreview =
+    document.getElementById("audioPreview");
+
+
+const progressContainer =
+    document.getElementById("progressContainer");
+
+
+const progressBar =
+    document.getElementById("progressBar");
+
+
+const progressPercent =
+    document.getElementById("progressPercent");
+
+
+const progressStatus =
+    document.getElementById("progressStatus");
+
+
+const successMessage =
+    document.getElementById("successMessage");
+
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+const userStatus =
+    document.getElementById("userStatus");
+
+
+/* =========================================================
+   CURRENT USER
+   ========================================================= */
+
+let currentUser = null;
+
+
+onAuthStateChanged(
+    auth,
+    (user) => {
+
+        currentUser = user;
+
+
+        if (user) {
+
+            userStatus.textContent =
+                "Logged in as " +
+                (user.email || "Tuneora user");
+
+            uploadButton.disabled = false;
+
+        } else {
+
+            userStatus.textContent =
+                "Please login before uploading music.";
+
+            uploadButton.disabled = true;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FILE SELECT
+   ========================================================= */
+
+audioFile.addEventListener(
+    "change",
+    () => {
+
+        const file =
+            audioFile.files[0];
+
+
+        if (!file) {
+
+            fileInfo.textContent =
+                "Select an audio file.";
+
+            audioPreview.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        const sizeMB =
+            (
+                file.size /
+                (1024 * 1024)
+            ).toFixed(2);
+
+
+        fileInfo.textContent =
+            `${file.name} • ${sizeMB} MB`;
+
+
+        const previewURL =
+            URL.createObjectURL(file);
+
+
+        audioPreview.src =
+            previewURL;
+
+
+        audioPreview.style.display =
+            "block";
+
+    }
+);
+
+
+/* =========================================================
+   MESSAGE HELPERS
+   ========================================================= */
+
+function showSuccess(message) {
+
+    successMessage.textContent =
+        message;
+
+    successMessage.style.display =
+        "block";
+
+    errorMessage.style.display =
+        "none";
+}
+
+
+function showError(message) {
+
+    errorMessage.textContent =
+        message;
+
+    errorMessage.style.display =
+        "block";
+
+    successMessage.style.display =
+        "none";
+}
+
+
+function hideMessages() {
+
+    successMessage.style.display =
+        "none";
+
+    errorMessage.style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   RESET PROGRESS
+   ========================================================= */
+
+function resetProgress() {
+
+    progressBar.style.width =
+        "0%";
+
+    progressPercent.textContent =
+        "0%";
+
+    progressStatus.textContent =
+        "Preparing...";
+
+}
+
+
+/* =========================================================
+   UPLOAD TO CLOUDINARY
+   ========================================================= */
+
+function uploadToCloudinary(file) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+
+            const url =
+                `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`;
+
+
+            const xhr =
+                new XMLHttpRequest();
+
+
+            const formData =
+                new FormData();
+
+
+            formData.append(
+                "file",
+                file
+            );
+
+
+            formData.append(
+                "upload_preset",
+                CLOUDINARY_UPLOAD_PRESET
+            );
+
+
+            xhr.open(
+                "POST",
+                url,
+                true
+            );
+
+
+            xhr.upload.addEventListener(
+                "progress",
+                (event) => {
+
+                    if (!event.lengthComputable) {
+                        return;
+                    }
+
+
+                    const percent =
+                        Math.round(
+                            (
+                                event.loaded /
+                                event.total
+                            ) * 100
+                        );
+
+
+                    progressBar.style.width =
+                        percent + "%";
+
+
+                    progressPercent.textContent =
+                        percent + "%";
+
+
+                    progressStatus.textContent =
+                        "Uploading audio...";
+
+                }
+            );
+
+
+            xhr.onload = () => {
+
+                if (
+                    xhr.status >= 200 &&
+                    xhr.status < 300
+                ) {
+
+                    try {
+
+                        const response =
+                            JSON.parse(
+                                xhr.responseText
+                            );
+
+
+                        resolve(response);
+
+                    } catch (error) {
+
+                        reject(
+                            new Error(
+                                "Invalid Cloudinary response."
+                            )
+                        );
+
+                    }
+
+                } else {
+
+                    let message =
+                        "Cloudinary upload failed.";
+
+                    try {
+
+                        const response =
+                            JSON.parse(
+                                xhr.responseText
+                            );
+
+
+                        if (
+                            response.error &&
+                            response.error.message
+                        ) {
+
+                            message =
+                                response.error.message;
+
+                        }
+
+                    } catch (error) {
+                        // Ignore JSON parsing error
+                    }
+
+
+                    reject(
+                        new Error(message)
+                    );
+
+                }
+
+            };
+
+
+            xhr.onerror = () => {
+
+                reject(
+                    new Error(
+                        "Network error while uploading."
+                    )
+                );
+
+            };
+
+
+            xhr.send(formData);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   GET AUDIO DURATION
+   ========================================================= */
+
+function getAudioDuration(file) {
+
+    return new Promise(
+        (resolve) => {
+
+            const audio =
+                document.createElement(
+                    "audio"
+                );
+
+
+            audio.preload =
+                "metadata";
+
+
+            audio.onloadedmetadata =
+                () => {
+
+                    const duration =
+                        Math.round(
+                            audio.duration
+                        );
+
+
+                    URL.revokeObjectURL(
+                        audio.src
+                    );
+
+
+                    resolve(duration);
+
+                };
+
+
+            audio.onerror =
+                () => {
+
+                    resolve(0);
+
+                };
+
+
+            audio.src =
+                URL.createObjectURL(file);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   UPLOAD FORM
+   ========================================================= */
+
+uploadForm.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+
+        hideMessages();
+
+
+        /* CHECK LOGIN */
+
+        if (!currentUser) {
+
+            showError(
+                "Please login before uploading a song."
+            );
+
+            return;
+
+        }
+
+
+        /* CHECK CLOUD NAME */
+
+        if (
+            !CLOUDINARY_CLOUD_NAME ||
+            CLOUDINARY_CLOUD_NAME ===
+            "YOUR_CLOUD_NAME"
+        ) {
+
+            showError(
+                "Cloudinary Cloud Name is not configured yet."
+            );
+
+            return;
+
+        }
+
+
+        /* GET FORM VALUES */
+
+        const title =
+            document
+                .getElementById("songTitle")
+                .value
+                .trim();
+
+
+        const artist =
+            document
+                .getElementById("artistName")
+                .value
+                .trim();
+
+
+        const genre =
+            document
+                .getElementById("genre")
+                .value;
+
+
+        const description =
+            document
+                .getElementById("description")
+                .value
+                .trim();
+
+
+        const file =
+            audioFile.files[0];
+
+
+        /* VALIDATION */
+
+        if (!title) {
+
+            showError(
+                "Please enter the song title."
+            );
+
+            return;
+
+        }
+
+
+        if (!artist) {
+
+            showError(
+                "Please enter the artist name."
+            );
+
+            return;
+
+        }
+
+
+        if (!genre) {
+
+            showError(
+                "Please select a genre."
+            );
+
+            return;
+
+        }
+
+
+        if (!file) {
+
+            showError(
+                "Please select an audio file."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !file.type.startsWith("audio/")
+        ) {
+
+            showError(
+                "Please select a valid audio file."
+            );
+
+            return;
+
+        }
+
+
+        /* START */
+
+        uploadButton.disabled =
+            true;
+
+
+        progressContainer.style.display =
+            "block";
+
+
+        resetProgress();
+
+
+        try {
+
+
+            /* GET AUDIO DURATION */
+
+            progressStatus.textContent =
+                "Reading audio...";
+
+
+            const duration =
+                await getAudioDuration(
+                    file
+                );
+
+
+            /* CLOUDINARY */
+
+            progressStatus.textContent =
+                "Uploading to Cloudinary...";
+
+
+            const cloudinaryResult =
+                await uploadToCloudinary(
+                    file
+                );
+
+
+            if (
+                !cloudinaryResult.secure_url
+            ) {
+
+                throw new Error(
+                    "Cloudinary did not return an audio URL."
+                );
+
+            }
+
+
+            const audioURL =
+                cloudinaryResult.secure_url;
+
+
+            /* FIRESTORE */
+
+            progressStatus.textContent =
+                "Saving song details...";
+
+
+            progressBar.style.width =
+                "100%";
+
+
+            progressPercent.textContent =
+                "100%";
+
+
+            await addDoc(
+                collection(
+                    db,
+                    "songs"
+                ),
+                {
+
+                    title:
+                        title,
+
+                    artist:
+                        artist,
+
+                    genre:
+                        genre,
+
+                    description:
+                        description,
+
+                    audioUrl:
+                        audioURL,
+
+                    duration:
+                        duration,
+
+                    fileName:
+                        file.name,
+
+                    fileSize:
+                        file.size,
+
+                    cloudinaryPublicId:
+                        cloudinaryResult.public_id ||
+                        "",
+
+                    resourceType:
+                        cloudinaryResult.resource_type ||
+                        "video",
+
+                    format:
+                        cloudinaryResult.format ||
+                        "",
+
+                    userId:
+                        currentUser.uid,
+
+                    uploaderEmail:
+                        currentUser.email ||
+                        "",
+
+                    createdAt:
+                        serverTimestamp(),
+
+                    status:
+                        "published",
+
+                    playCount:
+                        0,
+
+                    likeCount:
+                        0
+
+                }
+            );
+
+
+            /* SUCCESS */
+
+            progressStatus.textContent =
+                "Upload complete";
+
+
+            showSuccess(
+                "🎵 Song uploaded successfully to Tuneora!"
+            );
+
+
+            /* RESET FORM */
+
+            uploadForm.reset();
+
+
+            fileInfo.textContent =
+                "Select an audio file.";
+
+
+            audioPreview.pause();
+
+            audioPreview.removeAttribute(
+                "src"
+            );
+
+            audioPreview.load();
+
+            audioPreview.style.display =
+                "none";
+
+
+        } catch (error) {
+
+            console.error(
+                "Tuneora upload error:",
+                error
+            );
+
+
+            showError(
+                error.message ||
+                "Upload failed. Please try again."
+            );
+
+
+        } finally {
+
+            uploadButton.disabled =
+                false;
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
