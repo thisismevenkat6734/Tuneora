@@ -1,21 +1,44 @@
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+// ===============================
+// TUNEORA - FIREBASE CONFIG
+// ===============================
 
-import { getFirestore } 
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
+import {
+    getAuth
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+import {
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+// Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAt8zCadyJg2jWtSnNvVDt-BEbijKRDwNo",
-    authDomain: "expense-tracker-4cf78.firebaseapp.com",
-    projectId: "expense-tracker-4cf78",
-    storageBucket: "expense-tracker-4cf78.firebasestorage.app",
-    messagingSenderId: "868097839863",
-    appId: "1:868097839863:web:401ac62e41f828aa6fb9f2",
-    measurementId: "G-0SZ92TJM2T"
+    apiKey: "AIzaSyCoeM5vZ7mgQYzK4-aUSRtVza_nxnpQyrM",
+    authDomain: "tuneora-22483.firebaseapp.com",
+    projectId: "tuneora-22483",
+    storageBucket: "tuneora-22483.firebasestorage.app",
+    messagingSenderId: "306207135080",
+    appId: "1:306207135080:web:9c10a69875b1e73fe672dd"
 };
 
+
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+
+// Firebase Authentication
+const auth = getAuth(app);
+
+
+// Cloud Firestore
 const db = getFirestore(app);
 
-export { app, db };
+
+// Export Firebase services
+export {
+    app,
+    auth,
+    db
+};
