@@ -44,9 +44,9 @@
                 Upload
             </a>
 
-            <a href="login.html" class="login-button">
-                Login
-            </a>
+            <a href="login.html" class="login-button" id="loginButton">
+    Login
+</a>
 
         </div>
 
@@ -538,16 +538,60 @@
             <small>Music</small>
         </a>
 
-        <a href="login.html" class="mobile-nav-item">
-            <span>◯</span>
-            <small>Profile</small>
-        </a>
+        <a href="login.html" class="mobile-nav-item" id="mobileProfileLink">
+    <span>◯</span>
+    <small>Profile</small>
+</a>
 
     </nav>
 
 
     <!-- ================= JAVASCRIPT ================= -->
    <script type="module" src="js/app.js"></script> 
+<script type="module">
 
+    import { auth } from "./js/firebase.js";
+
+    import {
+        onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const mobileProfileLink =
+        document.getElementById("mobileProfileLink");
+
+
+    onAuthStateChanged(auth, (user) => {
+
+        if (user) {
+
+            if (loginButton) {
+                loginButton.href = "profile.html";
+                loginButton.textContent = "Profile";
+            }
+
+            if (mobileProfileLink) {
+                mobileProfileLink.href = "profile.html";
+            }
+
+        } else {
+
+            if (loginButton) {
+                loginButton.href = "login.html";
+                loginButton.textContent = "Login";
+            }
+
+            if (mobileProfileLink) {
+                mobileProfileLink.href = "login.html";
+            }
+
+        }
+
+    });
+
+</script>
 </body>
 </html>
