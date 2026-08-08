@@ -1796,3 +1796,431 @@ main {
         color: white;
     }
 }
+/* =========================================================
+   TUNEORA FINAL MOBILE RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    body {
+        overflow-x: hidden !important;
+    }
+
+    /* HEADER */
+
+    .top-header {
+        height: 62px !important;
+        padding: 0 14px !important;
+    }
+
+    .main-nav {
+        display: none !important;
+    }
+
+    .brand-icon {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .brand-text h1 {
+        font-size: 16px !important;
+    }
+
+    .brand-text span {
+        font-size: 7px !important;
+    }
+
+    .header-actions {
+        gap: 5px !important;
+    }
+
+    .icon-button {
+        display: flex !important;
+    }
+
+    .upload-button {
+        padding: 0 10px !important;
+        height: 34px !important;
+        font-size: 10px !important;
+    }
+
+    .login-button {
+        height: 34px !important;
+        padding: 0 11px !important;
+        font-size: 10px !important;
+    }
+
+
+    /* MAIN */
+
+    main {
+        width: 92% !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        padding-bottom: 130px !important;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: auto !important;
+        padding: 45px 0 25px !important;
+    }
+
+    .hero-content {
+        width: 100% !important;
+    }
+
+    .hero h2 {
+        font-size: 43px !important;
+        line-height: .98 !important;
+        letter-spacing: -2px !important;
+    }
+
+    .hero p {
+        width: 100% !important;
+        font-size: 12px !important;
+        line-height: 1.7 !important;
+    }
+
+    .hero-buttons {
+        display: flex !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .hero-buttons a {
+        min-height: 40px !important;
+    }
+
+    .hero-art {
+        width: 100% !important;
+        height: 210px !important;
+        margin-top: 15px !important;
+    }
+
+    .vinyl {
+        width: 170px !important;
+        height: 170px !important;
+    }
+
+
+    /* TRENDING */
+
+    .music-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    .music-card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .cover-art {
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+    }
+
+    .music-info h3 {
+        font-size: 12px !important;
+    }
+
+    .music-info p {
+        font-size: 10px !important;
+    }
+
+    .song-meta {
+        font-size: 9px !important;
+    }
+
+    .play-card-button {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+
+    /* RECENTLY ADDED */
+
+    .song-list {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .song-row {
+        display: grid !important;
+
+        grid-template-columns:
+            52px
+            minmax(0, 1fr)
+            38px !important;
+
+        width: 100% !important;
+        min-height: 68px !important;
+
+        padding: 8px !important;
+
+        align-items: center !important;
+        gap: 10px !important;
+
+        border-radius: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .small-cover {
+        display: flex !important;
+
+        width: 52px !important;
+        height: 52px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border-radius: 9px !important;
+    }
+
+    .row-song-info {
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    .row-song-info h3 {
+        font-size: 13px !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .row-song-info p {
+        font-size: 10px !important;
+    }
+
+    .row-genre,
+    .row-duration {
+        display: none !important;
+    }
+
+    .row-play {
+        display: flex !important;
+
+        width: 36px !important;
+        height: 36px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border-radius: 50% !important;
+    }
+
+
+    /* CREATOR */
+
+    .creator-section {
+        display: flex !important;
+        width: 100% !important;
+
+        min-height: auto !important;
+
+        padding: 28px 20px !important;
+        margin-top: 45px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    .creator-content {
+        width: 100% !important;
+    }
+
+    .creator-content h2 {
+        font-size: 30px !important;
+        line-height: 1.1 !important;
+    }
+
+    .creator-content p {
+        font-size: 11px !important;
+        line-height: 1.6 !important;
+    }
+
+    .creator-icon {
+        display: none !important;
+    }
+
+
+    /* POPULAR CREATORS */
+
+    .artist-grid {
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .artist-card {
+        display: flex !important;
+
+        flex-direction: column !important;
+        align-items: center !important;
+
+        width: 100% !important;
+
+        padding: 18px 8px !important;
+
+        box-sizing: border-box !important;
+
+        border-radius: 14px !important;
+    }
+
+    .artist-avatar {
+        width: 58px !important;
+        height: 58px !important;
+
+        margin-bottom: 8px !important;
+    }
+
+    .artist-card h3 {
+        font-size: 12px !important;
+    }
+
+    .artist-card p {
+        font-size: 9px !important;
+    }
+
+
+    /* MUSIC PLAYER */
+
+    .music-player {
+        position: fixed !important;
+
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 58px !important;
+
+        width: 100% !important;
+
+        height: 62px !important;
+        min-height: 62px !important;
+
+        padding: 7px 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        box-sizing: border-box !important;
+
+        z-index: 9998 !important;
+    }
+
+    .now-playing {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .player-cover {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    .player-song {
+        min-width: 0 !important;
+    }
+
+    .player-song h3 {
+        font-size: 11px !important;
+    }
+
+    .player-song p {
+        font-size: 8px !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .player-controls {
+        flex-shrink: 0 !important;
+    }
+
+    .player-controls button {
+        display: none !important;
+    }
+
+    .player-controls .main-play-button {
+        display: flex !important;
+
+        width: 38px !important;
+        height: 38px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .player-progress,
+    .player-volume {
+        display: none !important;
+    }
+
+
+    /* MOBILE NAV */
+
+    .mobile-nav {
+        display: flex !important;
+
+        position: fixed !important;
+
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+
+        width: 100% !important;
+        height: 58px !important;
+
+        align-items: center !important;
+        justify-content: space-around !important;
+
+        z-index: 9999 !important;
+
+        box-sizing: border-box !important;
+    }
+
+    .mobile-nav-item {
+        display: flex !important;
+
+        flex: 1 !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 2px !important;
+
+        font-size: 17px !important;
+    }
+
+    .mobile-nav-item small {
+        font-size: 8px !important;
+    }
+
+    .upload-mobile span {
+        display: flex !important;
+
+        width: 34px !important;
+        height: 34px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border-radius: 50% !important;
+    }
+
+}
