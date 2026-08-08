@@ -2,12 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Tuneora - Upload Music</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tuneora — Upload Music</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,7 +24,7 @@
             min-height: 100vh;
             font-family: Arial, sans-serif;
             background: #080808;
-            color: #fff;
+            color: #ffffff;
 
             display: flex;
             justify-content: center;
@@ -32,12 +38,14 @@
             max-width: 500px;
 
             background: #151515;
+
             border: 1px solid #292929;
             border-radius: 22px;
 
             padding: 32px 28px;
 
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.5);
         }
 
         .logo {
@@ -73,7 +81,7 @@
         }
 
         .input-group {
-            margin-bottom: 17px;
+            margin-bottom: 18px;
         }
 
         label {
@@ -84,65 +92,71 @@
         }
 
         input,
-        select {
+        select,
+        textarea {
+
             width: 100%;
 
-            padding: 15px;
+            padding: 14px;
 
             border-radius: 12px;
+
             border: 1px solid #333;
 
             background: #0d0d0d;
-            color: #fff;
+
+            color: #ffffff;
 
             font-size: 15px;
+
             outline: none;
         }
 
         input:focus,
-        select:focus {
+        select:focus,
+        textarea:focus {
             border-color: #ff2d8d;
         }
 
-        select {
-            appearance: auto;
+        textarea {
+            min-height: 100px;
+            resize: vertical;
         }
 
-        .file-box {
-            width: 100%;
-
-            border: 1px dashed #444;
-            border-radius: 12px;
-
-            padding: 18px;
-
-            background: #0d0d0d;
+        input[type="file"] {
+            padding: 12px;
+            cursor: pointer;
         }
 
-        .file-box input {
-            border: none;
-            padding: 5px;
-            background: transparent;
+        .file-info {
+            margin-top: 7px;
+            font-size: 12px;
+            color: #777;
         }
 
         .upload-btn {
+
             width: 100%;
 
             border: none;
+
             border-radius: 12px;
 
             padding: 15px;
+
             margin-top: 8px;
 
-            background: linear-gradient(
-                135deg,
-                #ff2d8d,
-                #ff5b35
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2d8d,
+                    #ff5b35
+                );
 
-            color: #fff;
+            color: white;
 
             font-size: 16px;
+
             font-weight: bold;
 
             cursor: pointer;
@@ -153,7 +167,50 @@
             cursor: not-allowed;
         }
 
+        .progress-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 13px;
+            color: #aaa;
+
+            margin-bottom: 8px;
+        }
+
+        .progress-track {
+
+            width: 100%;
+            height: 8px;
+
+            background: #292929;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+
+            width: 0%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff2d8d,
+                    #ff5b35
+                );
+
+            transition: width 0.2s;
+        }
+
         .message {
+
             display: none;
 
             margin-top: 15px;
@@ -164,621 +221,4 @@
 
             font-size: 13px;
 
-            text-align: center;
-        }
-
-        .back {
-            display: block;
-
-            text-align: center;
-
-            margin-top: 20px;
-
-            color: #888;
-
-            text-decoration: none;
-
-            font-size: 14px;
-        }
-
-        .back:hover {
-            color: #ff3d91;
-        }
-
-        .progress-container {
-            display: none;
-
-            margin-top: 15px;
-        }
-
-        .progress-text {
-            color: #aaa;
-            font-size: 13px;
-            margin-bottom: 7px;
-            text-align: center;
-        }
-
-        .progress-track {
-            width: 100%;
-            height: 8px;
-
-            background: #292929;
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-
-            background: linear-gradient(
-                90deg,
-                #ff2d8d,
-                #ff5b35
-            );
-
-            transition: width 0.2s;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="upload-container">
-
-        <div class="logo">
-            <h1>Tune<span>ora</span></h1>
-            <p>Your music. Your world.</p>
-        </div>
-
-        <h2>Upload Your Music</h2>
-
-        <p class="subtitle">
-            Share your original music with Tuneora listeners.
-        </p>
-
-
-        <form id="uploadForm">
-
-            <!-- SONG TITLE -->
-            <div class="input-group">
-
-                <label for="songTitle">
-                    Song Title
-                </label>
-
-                <input
-                    type="text"
-                    id="songTitle"
-                    placeholder="Enter song title"
-                    required
-                >
-
-            </div>
-
-
-            <!-- ARTIST NAME -->
-            <div class="input-group">
-
-                <label for="artistName">
-                    Artist Name
-                </label>
-
-                <input
-                    type="text"
-                    id="artistName"
-                    placeholder="Enter artist name"
-                    required
-                >
-
-            </div>
-
-
-            <!-- GENRE -->
-            <div class="input-group">
-
-                <label for="genre">
-                    Genre
-                </label>
-
-                <select id="genre" required>
-
-                    <option value="">
-                        Select genre
-                    </option>
-
-                    <option value="Pop">
-                        Pop
-                    </option>
-
-                    <option value="Rock">
-                        Rock
-                    </option>
-
-                    <option value="Hip Hop">
-                        Hip Hop
-                    </option>
-
-                    <option value="Electronic">
-                        Electronic
-                    </option>
-
-                    <option value="R&B">
-                        R&B
-                    </option>
-
-                    <option value="Acoustic">
-                        Acoustic
-                    </option>
-
-                    <option value="Chill">
-                        Chill
-                    </option>
-
-                    <option value="Ambient">
-                        Ambient
-                    </option>
-
-                    <option value="Indie">
-                        Indie
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- COVER IMAGE -->
-            <div class="input-group">
-
-                <label for="coverImage">
-                    Cover Image
-                </label>
-
-                <div class="file-box">
-
-                    <input
-                        type="file"
-                        id="coverImage"
-                        accept="image/*"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- AUDIO -->
-            <div class="input-group">
-
-                <label for="audioFile">
-                    Audio File
-                </label>
-
-                <div class="file-box">
-
-                    <input
-                        type="file"
-                        id="audioFile"
-                        accept="audio/*"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="upload-btn"
-                id="uploadBtn"
-            >
-                Upload Song
-            </button>
-
-
-            <div
-                class="progress-container"
-                id="progressContainer"
-            >
-
-                <div
-                    class="progress-text"
-                    id="progressText"
-                >
-                    Uploading... 0%
-                </div>
-
-                <div class="progress-track">
-
-                    <div
-                        class="progress-bar"
-                        id="progressBar"
-                    ></div>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="message"
-                id="message"
-            ></div>
-
-        </form>
-
-
-        <a
-            href="index.html"
-            class="back"
-        >
-            ← Back to Tuneora
-        </a>
-
-    </div>
-
-
-    <script type="module">
-
-        import { auth, db, storage }
-            from "./js/firebase.js";
-
-
-        import {
-            onAuthStateChanged
-        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
-
-        import {
-            collection,
-            addDoc,
-            serverTimestamp
-        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
-
-
-        import {
-            ref,
-            uploadBytesResumable,
-            getDownloadURL
-        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-storage.js";
-
-
-        const uploadForm =
-            document.getElementById("uploadForm");
-
-        const uploadBtn =
-            document.getElementById("uploadBtn");
-
-        const message =
-            document.getElementById("message");
-
-        const progressContainer =
-            document.getElementById("progressContainer");
-
-        const progressBar =
-            document.getElementById("progressBar");
-
-        const progressText =
-            document.getElementById("progressText");
-
-
-        let currentUser = null;
-
-
-        // ==========================
-        // CHECK LOGIN
-        // ==========================
-
-        onAuthStateChanged(auth, (user) => {
-
-            if (!user) {
-
-                window.location.href = "login.html";
-
-                return;
-            }
-
-            currentUser = user;
-
-        });
-
-
-        // ==========================
-        // MESSAGE
-        // ==========================
-
-        function showMessage(text, success = false) {
-
-            message.style.display = "block";
-
-            message.textContent = text;
-
-            if (success) {
-
-                message.style.background = "#12351f";
-                message.style.color = "#55e88a";
-
-            } else {
-
-                message.style.background = "#35151b";
-                message.style.color = "#ff7185";
-
-            }
-        }
-
-
-        // ==========================
-        // UPLOAD
-        // ==========================
-
-        uploadForm.addEventListener(
-            "submit",
-            async (event) => {
-
-                event.preventDefault();
-
-
-                if (!currentUser) {
-
-                    showMessage(
-                        "Please login before uploading."
-                    );
-
-                    return;
-                }
-
-
-                const songTitle =
-                    document
-                        .getElementById("songTitle")
-                        .value
-                        .trim();
-
-
-                const artistName =
-                    document
-                        .getElementById("artistName")
-                        .value
-                        .trim();
-
-
-                const genre =
-                    document
-                        .getElementById("genre")
-                        .value;
-
-
-                const coverFile =
-                    document
-                        .getElementById("coverImage")
-                        .files[0];
-
-
-                const audioFile =
-                    document
-                        .getElementById("audioFile")
-                        .files[0];
-
-
-                if (!coverFile || !audioFile) {
-
-                    showMessage(
-                        "Please select both cover image and audio file."
-                    );
-
-                    return;
-                }
-
-
-                // File size protection
-                if (audioFile.size > 50 * 1024 * 1024) {
-
-                    showMessage(
-                        "Audio file must be smaller than 50 MB."
-                    );
-
-                    return;
-                }
-
-
-                uploadBtn.disabled = true;
-
-                uploadBtn.textContent =
-                    "Uploading...";
-
-
-                progressContainer.style.display =
-                    "block";
-
-
-                try {
-
-                    // ==========================
-                    // COVER IMAGE
-                    // ==========================
-
-                    const coverPath =
-                        `covers/${currentUser.uid}/${Date.now()}_${coverFile.name}`;
-
-
-                    const coverRef =
-                        ref(storage, coverPath);
-
-
-                    const coverSnapshot =
-                        await uploadBytesResumable(
-                            coverRef,
-                            coverFile
-                        );
-
-
-                    const coverURL =
-                        await getDownloadURL(
-                            coverSnapshot.ref
-                        );
-
-
-                    // ==========================
-                    // AUDIO FILE
-                    // ==========================
-
-                    const audioPath =
-                        `songs/${currentUser.uid}/${Date.now()}_${audioFile.name}`;
-
-
-                    const audioRef =
-                        ref(storage, audioPath);
-
-
-                    const audioUpload =
-                        uploadBytesResumable(
-                            audioRef,
-                            audioFile
-                        );
-
-
-                    audioUpload.on(
-
-                        "state_changed",
-
-                        (snapshot) => {
-
-                            const progress =
-                                Math.round(
-                                    (
-                                        snapshot.bytesTransferred /
-                                        snapshot.totalBytes
-                                    ) * 100
-                                );
-
-
-                            progressBar.style.width =
-                                progress + "%";
-
-
-                            progressText.textContent =
-                                `Uploading... ${progress}%`;
-
-                        },
-
-                        (error) => {
-
-                            console.error(error);
-
-                            showMessage(
-                                "Audio upload failed."
-                            );
-
-                            uploadBtn.disabled =
-                                false;
-
-                            uploadBtn.textContent =
-                                "Upload Song";
-
-                        },
-
-                        async () => {
-
-                            const audioURL =
-                                await getDownloadURL(
-                                    audioUpload.snapshot.ref
-                                );
-
-
-                            // ==========================
-                            // SAVE SONG DATA
-                            // ==========================
-
-                            await addDoc(
-                                collection(db, "songs"),
-                                {
-
-                                    title: songTitle,
-
-                                    artist: artistName,
-
-                                    genre: genre,
-
-                                    coverURL: coverURL,
-
-                                    audioURL: audioURL,
-
-                                    userId:
-                                        currentUser.uid,
-
-                                    userEmail:
-                                        currentUser.email,
-
-                                    createdAt:
-                                        serverTimestamp(),
-
-                                    plays: 0,
-
-                                    likes: 0
-
-                                }
-                            );
-
-
-                            showMessage(
-                                "Song uploaded successfully!",
-                                true
-                            );
-
-
-                            uploadBtn.textContent =
-                                "Upload Complete";
-
-
-                            progressBar.style.width =
-                                "100%";
-
-
-                            progressText.textContent =
-                                "Upload complete!";
-
-
-                            setTimeout(() => {
-
-                                window.location.href =
-                                    "index.html";
-
-                            }, 1800);
-
-                        }
-
-                    );
-
-                } catch (error) {
-
-                    console.error(error);
-
-                    showMessage(
-                        "Unable to upload song. Please try again."
-                    );
-
-
-                    uploadBtn.disabled =
-                        false;
-
-                    uploadBtn.textContent =
-                        "Upload Song";
-
-                }
-
-            }
-        );
-
-    </script>
-
-</body>
-
-                  </html>
+            text-align:
