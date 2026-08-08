@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tuneora - Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #080808;
+      color: #ffffff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 430px;
+
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 22px;
+
+      padding: 35px 28px;
+
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ff2d8d;
+    }
+
+    .logo p {
+      margin-top: 8px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #bbb;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 15px;
+
+      border-radius: 12px;
+      border: 1px solid #333;
+
+      background: #0d0d0d;
+      color: #ffffff;
+
+      font-size: 15px;
+
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #ff2d8d;
+    }
+
+    .login-btn {
+      width: 100%;
+
+      border: none;
+      border-radius: 12px;
+
+      padding: 15px;
+      margin-top: 5px;
+
+      background: linear-gradient(
+        135deg,
+        #ff2d8d,
+        #ff5b35
+      );
+
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      font-size: 13px;
+
+      text-align: center;
+    }
+
+    .forgot {
+      display: block;
+
+      text-align: right;
+
+      margin-top: 10px;
+
+      color: #ff3d91;
+
+      font-size: 13px;
+
+      text-decoration: none;
+
+      cursor: pointer;
+    }
+
+    .signup-link {
+      text-align: center;
+
+      margin-top: 22px;
+
+      color: #999;
+
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #ff3d91;
+
+      text-decoration: none;
+
+      font-weight: bold;
+    }
+
+    .back {
+     
